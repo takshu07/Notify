@@ -3,7 +3,7 @@ const Note = require("../models/personalNotes"); // adjust path if needed
 
 const createPersonalNotes = async (req, res) => {
   try {
-    const { title, description, body , owner } = req.body;
+    const { title, description, body } = req.body;
 
     // validation
     if (!title || !body) {
@@ -14,7 +14,7 @@ const createPersonalNotes = async (req, res) => {
       title,
       description,
       body,
-      owner
+      owner: req.user._id
     });
 
     return res.status(201).json({
